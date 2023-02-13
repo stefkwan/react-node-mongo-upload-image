@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 export default class FilesUploadComponent extends Component {
   constructor(props) {
     super(props);
     this.onFileChange = this.onFileChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      profileImg: "",
+      profileImg: '',
     };
   }
   onFileChange(e) {
@@ -15,9 +15,9 @@ export default class FilesUploadComponent extends Component {
   onSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("profileImg", this.state.profileImg);
+    formData.append('profileImg', this.state.profileImg);
     axios
-      .post("http://localhost:4000/api/user-profile", formData, {})
+      .post('http://localhost:4000/api/upload-image', formData, {})
       .then((res) => {
         console.log(res);
       });
@@ -25,14 +25,14 @@ export default class FilesUploadComponent extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
+      <div className='container'>
+        <div className='row'>
           <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <input type="file" onChange={this.onFileChange} />
+            <div className='form-group'>
+              <input type='file' onChange={this.onFileChange} />
             </div>
-            <div className="form-group">
-              <button className="btn btn-primary" type="submit">
+            <div className='form-group'>
+              <button className='btn btn-primary' type='submit'>
                 Upload
               </button>
             </div>
